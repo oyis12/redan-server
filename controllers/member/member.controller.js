@@ -80,3 +80,24 @@ export const updateMemberProfile = async (req, res) => {
     });
   }
 };
+
+export const getLoggedInUser = async (req, res) => {
+  try {
+    if (!req.user) {
+      return res.status(401).json({ success: false, message: "Unauthorized" });
+    }
+
+    const userData = req.user.toObject(); // convert from Mongoose doc
+    delete userData.password;
+    delete userData.verificationCode;
+
+    res.status(200).json({
+      success: true,
+      role: req.userType, // 'member' or one of the ADMIN_ROLES
+      data: userData,
+    });
+  } catch (err) {
+    console.error("Error fetching logged-in user:", err);
+    return res.status(500).json({ success: false, message: "Server error" });
+  }
+};

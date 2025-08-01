@@ -14,7 +14,7 @@ import { protect } from '../../middleware/authMiddleware.js';
 
 const router = express.Router();
 
-router.post('/register-member', registerMember);
+router.post('/register', registerMember);
 router.post('/verify', verifyMemberAccount);
 router.get('/verify', verifyMemberAccount); // For email verification via token url
 router.post("/resend-verification", resendVerificationEmail);

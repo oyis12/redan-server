@@ -17,6 +17,7 @@ cloudinary.config({
 const getCloudinaryParams = (file) => {
   const folderMap = {
     profilePhoto: 'profile-photos',
+    profilePhotoUrl: 'profile-photos',
     companyLogo: 'company-logos',
     identificationDoc: 'documents/identifications',
     taxClearance: 'documents/tax-clearance',

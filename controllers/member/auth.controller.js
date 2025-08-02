@@ -262,18 +262,16 @@ export const loginMember = async (req, res) => {
     member.lastLogin = Date.now();
     await member.save();
 
+      // Convert to object and strip sensitive fields
+    const memberData = member.toObject();
+    delete memberData.password;
+    delete memberData.verificationCode;
+
     res.status(200).json({
       success: true,
-        message: "Login successful",
-      data: {
-        id: member._id,
-        fullName: member.fullName,
-        email: member.email,
-        membershipId: member.membershipId,
-        isVerified: member.isVerified,
-        role: member.role,
-      },
-    token,
+      message: "Login successful",
+      data:memberData,
+     token,
     });
   } catch (err) {
     console.error(err);

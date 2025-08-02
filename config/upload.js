@@ -90,7 +90,7 @@ const upload = multer({
     cb(null, true);
   },
 }).fields([
-  { name: 'profilePhoto', maxCount: 1 },
+  { name: 'profilePhotoUrl', maxCount: 1 },
   { name: 'companyLogo', maxCount: 1 },
   { name: 'identificationDoc', maxCount: 1 },
   { name: 'taxClearance', maxCount: 1 },
